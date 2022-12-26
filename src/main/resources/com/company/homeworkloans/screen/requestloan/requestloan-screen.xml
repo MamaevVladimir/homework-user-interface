@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://requestLoan.caption">
+
+    <data>
+        <instance id="loanDc" class="com.company.homeworkloans.entity.Loan">
+            <fetchPlan extends="_base">
+                <property name="client" fetchPlan="_instance_name"/>
+            </fetchPlan>
+        </instance>
+        <collection id="clientDc" class="com.company.homeworkloans.entity.Client">
+            <fetchPlan extends="_base"/>
+            <loader id="clientDl">
+                <query>
+                    <![CDATA[select c from Client c]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <actions>
+        <action id="request"
+                caption="msg:///actions.Request"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="cancel"
+                caption="msg:///actions.Cancel"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout spacing="true" height="AUTO" width="AUTO">
+        <hbox visible="false">
+            <form id="form">
+                <column width="350px">
+                    <entityComboBox id="clientField"
+                                    caption="msg://com.company.homeworkloans.entity/Loan.client"
+                                    dataContainer="loanDc"
+                                    property="client"
+                                    optionsContainer="clientDc">
+                    </entityComboBox>
+                    <textField id="amountField"
+                               caption="msg://com.company.homeworkloans.entity/Loan.amount"
+                               property="amount"
+                               required="true"
+                               datatype="decimal"/>
+                </column>
+            </form>
+            <hbox width="AUTO" spacing="true">
+                <button id="requestBtn" icon="font-icon:PLAY" action="request"/>
+                <button id="cancelBtn" action="cancel"/>
+            </hbox>
+        </hbox>
+    </layout>
+</window>

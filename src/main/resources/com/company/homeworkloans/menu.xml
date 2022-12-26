@@ -6,6 +6,8 @@
         <item screen="Loan.browse" caption="msg://com.company.homeworkloans.screen.loan/loanBrowse.menu"/>
         <item screen="User.browse" caption="msg://com.company.homeworkloans.screen.user/UserBrowse.caption"/>
         <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+        <item screen="LoanApproval.browse"
+              caption="msg://com.company.homeworkloans.screen.loan/loanApprovalBrowse.menu"/>
     </menu>
 
 </menu-config>
